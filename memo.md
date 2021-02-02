@@ -8,6 +8,8 @@
 
 ## vi
 
+- Insert へ移行  
+  i
 - Insert の終了
   esc
 - 保存して終了
