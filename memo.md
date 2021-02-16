@@ -30,3 +30,9 @@
     git commit
   - push  
     git push -u origin HEAD
+
+# React
+
+## props
+
+コンポーネントの属性のこと
