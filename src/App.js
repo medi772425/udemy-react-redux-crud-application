@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 //クラスコンポーネント
 // class App extends Component{
@@ -17,7 +18,7 @@ const App = () =>{
   const profiles = [
     {name:"taro", age:10},
     {name:"Hanako", age:5},
-    {name:"noname"}
+    {name:"noname", age:"a"}
   ]
 
   return <div>
@@ -33,8 +34,9 @@ const User = (props) => {
   return props.name + props.age;
 }
 
-User.defaultProps = {
-  age: 1
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 
 
