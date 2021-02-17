@@ -1,43 +1,42 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-//クラスコンポーネント
-// class App extends Component{
-//   render(){
-//     return(
-//     <React.Fragment>
-//       <input type="text" onClick={() => console.log("aaa")}/>
-//       <input type="text" onClick={() => console.log("bbb")}/>
-//     </React.Fragment>
-//     );
-//   }
-// }
+//クラスコンポーネントを使用する場合は、{ Component } の記載が必要
+import React, { Component } from 'react';
 
 //関数コンポーネント
-const App = () =>{
-  const profiles = [
-    {name:"taro", age:10},
-    {name:"Hanako", age:5},
-    {name:"noname", age:"a"}
-  ]
+const App = () =>(<Counter></Counter>)
 
-  return <div>
-         {
-             profiles.map((profile, index) => {
-              return <User name={profile.name} age={profile.age} key={index} />
-            })
-         }
-         </div>
+//クラスコンポーネント
+class Counter extends Component {
+  //コンポーネントの初期化時に動作する
+  //propsの受け取りが可能
+  constructor(props){
+    //親クラスへ初期化？的な
+    super(props);
+    this.state = { count: 0 }
+  }
+
+  hundlePlusButton = () =>{
+    //stateを変更する際に使うお決まりのメソッド
+    //setState()を使用せずに直接値を変更したりすると、画面は変わらない。
+    //setState()を使用したときにrender()が動作する
+    this.setState({count: this.state.count +1});
+  }
+
+  hundleMinusButton = () =>{
+    this.setState({count: this.state.count -1});
+  }
+
+  render(){
+    return (
+    //コンポーネントでreturnする際は、一つのタグにする必要があるため
+    <React.Fragment>
+      <div>count: {this.state.count}</div>
+      <button onClick={this.hundlePlusButton}>+1</button>
+      <button onClick={this.hundleMinusButton}>-1</button>
+    </React.Fragment>
+    )
+  }
 }
 
-const User = (props) => {
-  return props.name + props.age;
-}
-
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
-}
 
 
 export default App;
